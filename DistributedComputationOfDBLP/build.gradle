@@ -1,0 +1,106 @@
+plugins {
+    id 'java'
+    id 'idea'
+
+}
+apply plugin: 'idea'
+group 'org.example'
+version 'Server'
+
+task runServer(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'Server'
+}
+
+task runClient(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'Client'
+}
+
+task runClient1(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'client1'
+}
+task runClient2(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'Client2'
+}
+
+task runClient3(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'Client3'
+}
+
+task runClient4(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'Client4'
+}
+task helloWorldServer(type: CreateStartScripts) {
+    mainClassName = "Server"
+    applicationName = "hw441"
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
+
+task helloWorldClient(type: CreateStartScripts) {
+    mainClassName = "client"
+    applicationName = "hw441"
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
+
+task helloWorldClient1(type: CreateStartScripts) {
+    mainClassName = "Client1"
+    applicationName = "hw441"
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
+
+
+task helloWorldClient2(type: CreateStartScripts) {
+    mainClassName = "Client2"
+    applicationName = "hw441"
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
+
+task helloWorldClient3(type: CreateStartScripts) {
+    mainClassName = "Client3"
+    applicationName = "hw441"
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
+
+task helloWorldClient4(type: CreateStartScripts) {
+    mainClassName = "Client4"
+    applicationName = "hw441"
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
+
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'Server'
+        )
+    }
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.opencsv', name: 'opencsv', version: '3.7'
+    compile group: 'com.typesafe', name: 'config', version: '1.4.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.3'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.3'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
+    compile fileTree(dir: 'libs/', include: '*.jar')
+}

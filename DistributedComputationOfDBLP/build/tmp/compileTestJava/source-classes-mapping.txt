@@ -1,0 +1,2 @@
+Testcasesforlogicclass.java
+ Testcasesforlogicclass
